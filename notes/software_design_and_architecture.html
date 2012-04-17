@@ -97,3 +97,271 @@ constrants</p>
 <h4>Basic of Design Process</h4>
 
 <p>设计方案，约束，需求，环境，资源，技术。。。</p>
+
+<p>满足与决策，选择性，顺序影响，不可逆</p>
+
+<h2>Chapter 2</h2>
+
+<h3>设计的层次</h3>
+
+<ul>
+<li>低层设计：代码设计 (关注把有限的语言的类型变成无穷的ADT)</li>
+<li>中层设计：模块与类设计 （减少片段间的依赖，====> 完全独立）</li>
+<li>高层设计：体系结构设计</li>
+</ul>
+
+<h4>底层设计：代码设计</h4>
+
+<ul>
+<li>1950s
+<ul>
+<li>第一代语言：硬件问题，指令的指令码太多了</li>
+<li>第二代语言：对于一些存储的处理，寄存器，逻辑</li>
+</ul></li>
+<li>1960s
+<ul>
+<li>第三代语言：类型与函数：第一次复杂系统分割，对于局部的类型。。。，促进了复用。问题：类型的有限性，算法的有限性，隔离了OS</li>
+<li>都是用编译器来解决</li>
+</ul></li>
+<li>1970s
+<ul>
+<li>函数与类型的成熟：形式化方法</li>
+<li>数据结构 + 算法 = 程序</li>
+</ul></li>
+<li>底层设计（原始类型 + 算法 => 抽象数据类型）</li>
+<li>质量：数据结构合理医用，算法可靠、高效、易读</li>
+<li>屏蔽数据结构和算法的实现细节</li>
+<li>抽象层，结构层 / 精华层，实现层</li>
+<li>代码设计
+<ul>
+<li>犯法和函数内部代码进行设计</li>
+<li>常见设计</li>
+</ul></li>
+<li>内部结构：算法和数据类型的组合，外部：抽象类型</li>
+</ul>
+
+<h4>中层设计：模块与类的设计</h4>
+
+<ul>
+<li>程序的分割
+<ul>
+<li>1970s：模块</li>
+<li>1980s：OO</li>
+<li>模块，模块化，信息隐藏，面向对象，原则、模式</li>
+</ul></li>
+<li>模块划分
+<ul>
+<li>掩盖内部结构，提供抽象和接口</li>
+</ul></li>
+<li>模块化
+<ul>
+<li>评价（简洁性，可观察性）</li>
+<li>目标：完全独立性（理解、使用和复用，开发，修改），可是不可能完全独立</li>
+<li>方法：实现尽可能独立（低耦合，高内聚）</li>
+<li>模块与对象间的联系
+<ul>
+<li>调用(2)
+<ul>
+<li>Data Coupling</li>
+<li>Stamp Coupling</li>
+<li>Control Coupling</li>
+<li>Content Coupling(Hybrid of data and control elements)</li>
+</ul></li>
+<li>共享参数(N - 1) ^ 2</li>
+<li>继承</li>
+<li>组合（聚合）</li>
+<li>依赖，重载</li>
+<li>Common Environmen: (Principle 1: Global Variables Consider Harmful)</li>
+<li>Information Cohesion (From module to object)</li>
+<li>Connection to other modules (explicit, ...)(Principle 2: To bve Explicit)</li>
+<li>业务逻辑的重复，简单代码的重复</li>
+<li>变量访问</li>
+</ul></li>
+<li>联系的要素
+<ul>
+<li>度数（多少个参与联系），内部的复杂</li>
+<li>接口，内部，接口最好</li>
+<li>传递信息的复杂度，需要</li>
+<li>理解所需的信息度，越少越好</li>
+</ul></li>
+<li>Cohesiveness
+<ul>
+<li>Coincident Binding</li>
+<li>Logic Binding: Binding by Similarity of Logic</li>
+<li>Temp.. </li>
+<li>Procedure Binding by the same time</li>
+<li>Communicational Binding: Binding by the same Data</li>
+<li>Sequential Binding: Binding by the same problem</li>
+<li>Functional Binding: Binding by the same goal （修改的相同性）（Goal: 满足用户的一条需求）（问题：有可能修改不是由用户发起的，不是由需求带来的）</li>
+</ul></li>
+<li>Four Kinds of Component coupling
+<ul>
+<li>Whole variable</li>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul></li>
+<li>The worst coupling: Implicit</li>
+<li>The law of Demeter
+<ul>
+<li>You can play with yourself</li>
+<li>You can play with your own toys </li>
+<li>...</li>
+<li>...</li>
+</ul></li>
+<li>Inheritance Coupling(LSP)Liskov Substitution Principle 
+<ul>
+<li>Modifying without and rules and restricts(BAD GUY)</li>
+<li>Refinement Inheritance Coupling</li>
+<li>Extension Inheritance Coupling</li>
+</ul></li>
+<li>Principles from Modularization
+<ul>
+<li>Global Variables Consider Harmful</li>
+<li>To be Explicit</li>
+<li>Do not Repeat</li>
+<li>Programming to Interface</li>
+<li>Design by Contract</li>
+</ul></li>
+</ul></li>
+</ul>
+
+<p>信息隐藏</p>
+
+<ul>
+<li>模块化方法1： 按照处理流程，每个功能一个模块</li>
+<li>模块化方法2： 信息隐藏，Each module has one or more "secrets"，需求</li>
+<li>每个模块实现了一个重要的决策，需求内部发生变化，需求的实现发生变化
+<ul>
+<li>需求</li>
+<li>变化</li>
+<li>例子，策略模式（需求，针对需求的实现，两个secret，需要单独下来）（针对单个行为是多变的）</li>
+<li>OCP，Extend is superior to modify，Extension：坚固性，Modify：简洁性</li>
+<li>准则：每个最基础的模块只有一个secret</li>
+<li>准则：每个secret只位于一个最基础的模块</li>
+<li>准则：secret需要被隐藏</li>
+</ul></li>
+<li>模块化 = 按功能设计
+<ul>
+<li>...</li>
+</ul></li>
+<li>信息隐藏 = 模块化 + 可修改性
+<ul>
+<li>给出功能接口，隐藏功能实现的细节</li>
+<li>...</li>
+</ul></li>
+<li>为每一个模块书写一个规格说明书
+<ul>
+<li>模块承担的功能</li>
+<li>对外接口</li>
+<li>主要秘密(模块需求决策 0 ~ N)，来源于需求规格说明</li>
+<li>次要秘密 来源于可修改性</li>
+</ul></li>
+<li>controll违反面象对象，层次比其他对象高</li>
+<li>创建对象的时候的if else 是没有办法避免的，它没有多多态</li>
+<li>多态，运行时注册，dll（替换）。。。</li>
+</ul>
+
+<p>理想的对象</p>
+
+<ul>
+<li>耦合
+<ul>
+<li>内部耦</li>
+</ul></li>
+<li>单一职责</li>
+</ul>
+
+<p>...</p>
+
+<h2>体系结构</h2>
+
+<h3>为什么要高层设计</h3>
+
+<ul>
+<li>Programming in the Small</li>
+<li>名称匹配</li>
+<li>详细设计的不足
+<ul>
+<li>载体失配（无法描述可靠性，性能）</li>
+<li>无法实现交互信息本地化（信息隐藏的局限性），Inside</li>
+<li>无法有效抽象部件的整体特性</li>
+<li>接口定义缺乏结构性（交互的规则，如果A调用是B必须调用）</li>
+<li>不能有效适应大型软件的特殊开发方法</li>
+</ul></li>
+</ul>
+
+<h3>Programming in the large</h3>
+
+<ul>
+<li>载体复杂度过大</li>
+<li>超出导入导出的关系</li>
+<li>需要从根本上超越导入导出</li>
+<li>不考虑导入到处，名字匹配</li>
+<li>Module Itself with Quality  property -> Component</li>
+<li>interactions of Component -> Connector
+<ul>
+<li>Structure</li>
+<li>None(Programming Mechanisms) implementation Considerations</li>
+</ul></li>
+<li>Configuration </li>
+<li>SA (内部：模块、进程、物理、网络节点，外部：功能、质量，考虑 Conponent, Connector, Configuration)
+<ul>
+<li>模块 -> OO -> 方法片段(DS + AG)</li>
+</ul></li>
+<li>Components are the locus of computation and state</li>
+<li>Connectors are the locus of relations among components
+<ul>
+<li>Connector deserve first-class</li>
+</ul></li>
+<li>概要设计（意识)   SAD（方法学：关键：Connector）</li>
+<li>Abstract specivication vs implementation </li>
+</ul>
+
+<h4>Component</h4>
+
+<ul>
+<li>Elements that encpsulate processing and data in a system's architecture are refered to as software components</li>
+<li>A software component is an architectural entity that
+<ul>
+<li>...</li>
+<li>...</li>
+<li>...</li>
+</ul></li>
+<li>Port 
+<ul>
+<li>Reqired Interface</li>
+<li>provide... Interface</li>
+<li>rules</li>
+<li>property</li>
+</ul></li>
+<li>ACME（体系结构的语言）</li>
+</ul>
+
+<h4>Connector</h4>
+
+<ul>
+<li>role(ruls property provide require interface)</li>
+<li>Primitive connectors
+<ul>
+<li>Procedure Call</li>
+<li>Shared variable</li>
+<li>Message</li>
+<li>Pipe</li>
+<li>Event</li>
+<li>...</li>
+</ul></li>
+<li>Explicit connectors
+<ul>
+<li>Adaptor</li>
+<li>Intermediate</li>
+<li>intermediate</li>
+</ul></li>
+</ul>
+
+<h4>Configuration</h4>
+
+<ul>
+<li>an ...</li>
+<li>Provided interface >= Required Interface</li>
+</ul>
