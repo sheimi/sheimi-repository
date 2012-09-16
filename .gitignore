@@ -5,3 +5,5 @@ lib
 **/lib
 *.pyc
 **/test
+**/release
+**/bin
