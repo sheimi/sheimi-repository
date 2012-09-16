@@ -7,3 +7,4 @@ lib
 **/test
 **/release
 **/bin
+**/*.swp

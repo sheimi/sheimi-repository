@@ -34,13 +34,13 @@ void extract_histogram(string& filename) {
         float bin_val = hist.at<float>(h, s, v);
         cout << bin_val << " ";
       }
+  cout << endl;
 }
 
 int main(int argc, char** argv) {
 
   // get the param
   string src_dir_path = argv[1];
-  cout << src_dir_path;
 
   // walk the dir
   DIR* src_dir = opendir(src_dir_path.c_str());
