@@ -59,7 +59,10 @@ class Video(ShellExec):
         command = (['ffmpeg', '-i', src, '-f',
                    'image2', '-r', interval, des]
                    for src, des in izip(srcs, deses))
-        self.exec_cmd(*command)
+        subs = self.exec_cmd(*command)
+        for sub in subs:
+            if sub.wait() != 0:
+                print sub.stderr.read()
 
 
 if __name__ == '__main__':
