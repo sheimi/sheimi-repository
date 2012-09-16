@@ -3,3 +3,5 @@ build
 **/build
 lib
 **/lib
+*.pyc
+**/test
