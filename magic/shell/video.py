@@ -37,15 +37,18 @@ class Video(ShellExec):
         return False
 
     def trim_dir(self, dirname):
-        i = 0 
+        i = 0
         while dirname[i - 1] == '/':
             i -= 1
         dirname = dirname if i == 0 else dirname[:i]
         return dirname
 
     def histogram(self):
-        HISTO_PATH = ('/Users/sheimi/Developer/repo/google_code'
-                      '/sheimi-repository/magic/bin/histogram')
+        # set histo bin path
+        HISTO_PATH = '%s/bin/histogram' %\
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+        # set source and des dir
         srcdirs = self.split_dir if hasattr(self, 'split_dir') else [args.src]
         desnames = [os.path.basename(self.trim_dir(src)) for src in srcdirs]
         desdir = args.histogram if args.histogram else self.cwd
@@ -53,14 +56,21 @@ class Video(ShellExec):
             os.mkdir(desdir)
         deses = ['/'.join([desdir, desname]) for desname in desnames]
         des_files = [open(des, 'w') for des in deses]
+
+        # set up command
         commands = ([[HISTO_PATH, src] for src in srcdirs])
         subs = self.exec_cmd(commands, stdouts=des_files)
         for sub in subs:
             if sub.wait() != 0:
                 print sub.stderr.read()
+
         des_files = [des.close() for des in des_files]
 
     def split(self):
+        '''
+        Invoke shell cmd to split video file in a directory.
+        set self.split_dir as result dir
+        '''
 
         # get the args
         srcdir = args.src

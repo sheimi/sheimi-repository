@@ -12,9 +12,11 @@ This file contains some shell command parent.
 import subprocess as sp
 from itertools import izip
 
+
 def yield_PIPE():
     while 1:
         yield sp.PIPE
+
 
 class ShellExec(object):
 
